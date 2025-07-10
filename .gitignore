@@ -3,31 +3,42 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# C extensions
-*.so
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Virtual environment
+venv/
+.env/
+.venv/
 
 # Jupyter Notebook checkpoints
-.ipynb_checkpoints
+.ipynb_checkpoints/
 
-# Environment files
-.env
-.venv/
-env/
-venv/
-ENV/
-*.env
-
-# macOS system files
+# OS-specific files
 .DS_Store
+Thumbs.db
 
 # VS Code settings
 .vscode/
 
-# Streamlit cache
-.streamlit/
-
 # Log files
 *.log
 
-# CSVs or test data (optional)
+# Cache and temporary files
+*.cache
+*.tmp
+
+# Project-specific output
+*.png
 *.csv
+
+# Ignore data outputs
+purchase_report.csv
+immunization_score_report.csv
+cashflow_comparison.png
+cashflow_comparison_scatter.png
+optimized_portfolio.csv
+bond_data.csv
+etf_data.csv
