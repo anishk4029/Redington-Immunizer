@@ -3,7 +3,7 @@ import pandas as pd
 from liability_analysis import analyze_liabilities
 from optimize_portfolio import run_optimization
 from score import calculate_immunization_score
-from visualize_cashflows import plot_cashflows
+from visualize_cashflows import visualize_cashflows
 
 st.set_page_config(page_title="Redington Immunizer", layout="wide")
 st.title("🔐 Redington Immunizer")
@@ -41,7 +41,7 @@ if uploaded_file:
 
         # Generate and show plot
         st.subheader("📍 Cashflow Comparison (Scatter Plot)")
-        plot_cashflows(liabilities, optimized_df)
+        visualize_cashflows(liabilities, optimized_df)
         st.image("cashflow_comparison_scatter.png")
     else:
         st.error("Optimization failed. Please try different inputs.")
