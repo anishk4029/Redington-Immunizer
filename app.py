@@ -27,21 +27,19 @@ if uploaded_file:
     st.write(f"**Convexity:** {convexity:.4f}")
 
     # Run optimization
-    optimized_df = run_optimization(pv, duration, convexity, liabilities)
+    optimized_df, asset_cashflows = run_optimization(pv, duration, convexity, liabilities, interest_rate)
 
     if optimized_df is not None and not optimized_df.empty:
         st.subheader("💼 Optimized Portfolio")
         st.dataframe(optimized_df)
 
-        # Show score
+        # Score and visualize
         score, breakdown = calculate_immunization_score(optimized_df, pv, duration, convexity)
-        st.subheader("📈 Immunization Score")
-        st.write(f"**Score:** {score:.2f}%")
+        st.subheader("📈 Immunization Score Breakdown")
+        st.markdown(f"**Score:** {score:.2f}%")
         st.dataframe(breakdown)
 
-        # Generate and show plot
-        st.subheader("📍 Cashflow Comparison (Scatter Plot)")
-        visualize_cashflows(liabilities, optimized_df)
-        st.image("cashflow_comparison_scatter.png")
+        visualize_cashflows(liabilities, asset_cashflows)
+        st.image("summed_cashflow_comparison.png", caption="Summed Cashflows Over Time")
     else:
-        st.error("Optimization failed. Please try different inputs.")
+        st.warning("⚠️ Optimization failed or returned no portfolio.")
