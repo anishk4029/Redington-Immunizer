@@ -10,6 +10,18 @@ st.title("🔐 Redington Immunizer")
 
 # Upload CSV
 uploaded_file = st.file_uploader("Upload your liability CSV file", type="csv")
+st.markdown(
+    """
+    ⚠️ **Note:** Make sure the first line of your CSV file is:
+
+    ```
+    time,amount
+    ```
+
+    And that each row represents a liability cashflow with the time (in years) and corresponding amount (in dollars).
+    """
+)
+
 
 if uploaded_file:
     liabilities_df = pd.read_csv(uploaded_file)
