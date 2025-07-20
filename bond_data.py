@@ -2,9 +2,11 @@
 import yfinance as yf
 from fredapi import Fred
 import pandas as pd
-
+from dotenv import load_dotenv
+import os
 # --- CONFIG ---
-FRED_API_KEY = "c4a5e36aea3b25bb7f5d8708b4f98a2e"  # Replace with your key
+load_dotenv()
+FRED_API_KEY = os.getenv("FRED_API_KEY")  # Replace with your key
 fred = Fred(api_key=FRED_API_KEY)
 
 # --- ETFs to Track ---
